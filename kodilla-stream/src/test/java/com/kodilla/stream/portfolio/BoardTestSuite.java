@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.OptionalDouble;
 
 import static java.util.stream.Collectors.toList;
 
@@ -148,22 +149,16 @@ public class BoardTestSuite {
         //When
         List<TaskList> inProgressTasks = new ArrayList<>();
         inProgressTasks.add(new TaskList("In progress"));
-        long suma = project.getTaskLists().stream()
+        double average = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(tl -> tl.getTasks().stream())
                 .map(t -> t.getCreated())
                 .map(d -> d.until(LocalDate.now(), ChronoUnit.DAYS))
-                .reduce(0l, (sum, current) -> sum = sum+(current));
-        long count = project.getTaskLists().stream()
-                .filter(inProgressTasks::contains)
-                .flatMap(tl -> tl.getTasks().stream())
-                .count();
-        long averageDaysInProgressTasks = suma/count;
+                .mapToDouble(td -> td.doubleValue())
+                .average()
+                .getAsDouble();
 
         //Then
-        Assert.assertEquals(30, suma, 0.01);
-        Assert.assertEquals(3, count);
-        Assert.assertEquals(10, averageDaysInProgressTasks);
-
+        Assert.assertEquals(10, average, 0.001);
     }
 }

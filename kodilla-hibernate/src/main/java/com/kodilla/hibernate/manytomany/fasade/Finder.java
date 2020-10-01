@@ -24,7 +24,7 @@ public class Finder {
 
     public List<Company> findCompanyByCharset (String charset) {
         LOGGER.info("Looking for company with charset: " + charset);
-        List<Company> companyList = companyDao.findByCharSet(charset);
+        List<Company> companyList = companyDao.findByCharSet("%" + charset + "%");
             if(companyList.size() >= 1) {
                 LOGGER.info("Successful search!");
             } else {
@@ -35,7 +35,7 @@ public class Finder {
 
     public List<Employee> findEmployeeByCharset (String charset) {
         LOGGER.info("Looking for employee with charset: " + charset);
-        List<Employee> employeeList = employeeDao.employeeByCharset(charset);
+        List<Employee> employeeList = employeeDao.employeeByCharset("%" + charset + "%");
         if(employeeList.size() >= 1) {
             LOGGER.info("Successful search!");
         } else {

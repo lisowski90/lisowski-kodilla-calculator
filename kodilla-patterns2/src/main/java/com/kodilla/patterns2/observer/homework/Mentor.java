@@ -1,6 +1,6 @@
 package com.kodilla.patterns2.observer.homework;
 
-public class Mentor implements TasksObserver{
+public class Mentor implements TasksObserver {
     public final String name;
     public int counter;
 

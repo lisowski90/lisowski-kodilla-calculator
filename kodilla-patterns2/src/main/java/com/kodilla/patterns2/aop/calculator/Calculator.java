@@ -22,16 +22,16 @@ public class Calculator {
     }
 
     public double div(double x, double y) {
-        if(y == 0) {
+        if (y == 0) {
             throw new ArithmeticException("Divide by 0!");
         }
-        return x/y;
+        return x / y;
     }
 
     public BigDecimal factorial(BigDecimal n) {
-        if ( n.compareTo(BigDecimal.ONE) > 0) {
+        if (n.compareTo(BigDecimal.ONE) > 0) {
             return n.multiply(factorial(n.subtract(BigDecimal.ONE)));
-        } else if ( n.equals(BigDecimal.ONE) || n.equals(BigDecimal.ZERO)) {
+        } else if (n.equals(BigDecimal.ONE) || n.equals(BigDecimal.ZERO)) {
             return BigDecimal.ONE;
         } else {
             throw new ArithmeticException("Factorail argument is negative");

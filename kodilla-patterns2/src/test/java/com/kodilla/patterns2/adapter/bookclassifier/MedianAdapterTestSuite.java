@@ -4,7 +4,7 @@ import com.kodilla.patterns2.adapter.bookclasifier.MedianAdapter;
 import com.kodilla.patterns2.adapter.bookclasifier.librarya.Book;
 import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 import java.util.HashSet;
 import java.util.Set;

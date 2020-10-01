@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.math.BigDecimal;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 public class TaxiOrderTestSuite {
 
@@ -73,7 +73,7 @@ public class TaxiOrderTestSuite {
     }
 
     @Test
-    public void  testMyTaxiWithChildSeatGetDescription() {
+    public void testMyTaxiWithChildSeatGetDescription() {
         //Given
         TaxiOrder taxiOrder = new BasicTaxiOrder();
         taxiOrder = new MyTaxiNetworkOrderDecorator(taxiOrder);
@@ -87,7 +87,7 @@ public class TaxiOrderTestSuite {
     }
 
     @Test
-    public  void  testVipTaxiWithChildSeatExpressGetCost() {
+    public void testVipTaxiWithChildSeatExpressGetCost() {
         //Given
         TaxiOrder taxiOrder = new BasicTaxiOrder();
         taxiOrder = new TaxiNetworkOrderDecorator(taxiOrder);
@@ -103,7 +103,7 @@ public class TaxiOrderTestSuite {
     }
 
     @Test
-    public void  testVipTaxiWithChildSeatExpressGetDescription() {
+    public void testVipTaxiWithChildSeatExpressGetDescription() {
         //Given
         TaxiOrder taxiOrder = new BasicTaxiOrder();
         taxiOrder = new TaxiNetworkOrderDecorator(taxiOrder);

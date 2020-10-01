@@ -103,7 +103,7 @@ public class ShopService {
                 .iterator();
         while (orderIterator.hasNext()) {
             Order theOrder = orderIterator.next();
-            if(theOrder.isVerified()) {
+            if (theOrder.isVerified()) {
                 theOrder.setSubmitted(true);
             }
             return theOrder.isSubmitted();

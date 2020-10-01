@@ -3,7 +3,7 @@ package com.kodilla.patterns2.observer.homework;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TasksQueue implements TaskObservable{
+public class TasksQueue implements TaskObservable {
     public final List<TasksObserver> tasksObservers;
     public final List<String> tasks;
     public final String name;
@@ -18,6 +18,7 @@ public class TasksQueue implements TaskObservable{
         tasks.add(task);
         notifyMentor();
     }
+
     @Override
     public void register(TasksObserver tasksObserver) {
         tasksObservers.add(tasksObserver);
@@ -25,7 +26,7 @@ public class TasksQueue implements TaskObservable{
 
     @Override
     public void notifyMentor() {
-        for(TasksObserver tasksObserver : tasksObservers) {
+        for (TasksObserver tasksObserver : tasksObservers) {
             tasksObserver.update(this);
         }
     }

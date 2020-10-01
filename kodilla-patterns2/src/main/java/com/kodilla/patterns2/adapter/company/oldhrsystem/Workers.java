@@ -12,10 +12,10 @@ public class Workers {
             3700.00,
             4350.00,
             9000.00,
-            6200.00 };
+            6200.00};
 
     public String getWorkers(int n) {
-        if (n>salaries.length) {
+        if (n > salaries.length) {
             return "";
         }
         return workers[n][0] + ", " + workers[n][1] + ", " + workers[n][2] + ", " + salaries[n];

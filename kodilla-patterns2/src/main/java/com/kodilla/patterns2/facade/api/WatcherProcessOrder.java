@@ -13,6 +13,6 @@ public class WatcherProcessOrder {
 
     @Before(value = "execution(* com.kodilla.patterns2.facade.api.OrderFacade.processOrder(..))" + "&&target(object)")
     public void logEvent(Object object) {
-            LOGGER.info("Call processOrder method from class: " + object.getClass().getName());
+        LOGGER.info("Call processOrder method from class: " + object.getClass().getName());
     }
 }

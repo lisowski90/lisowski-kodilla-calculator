@@ -26,32 +26,32 @@ public class OrderFacade {
             throw new OrderProcessingException(OrderProcessingException.ERR_NOT_AUTHORISED);
         }
         try {
-            for ( ItemDto orderItem: order.getItems()) {
+            for (ItemDto orderItem : order.getItems()) {
                 LOGGER.info("Adding item " + orderItem.getProductId() + ", " + orderItem.getQty() + " pcs.");
                 shopService.addItem(orderId, orderItem.getProductId(), orderItem.getQty());
             }
             BigDecimal value = shopService.calculateValue(orderId);
             LOGGER.info("Order value is: " + value + " USD!");
-            if(!shopService.doPayment(orderId)) {
+            if (!shopService.doPayment(orderId)) {
                 LOGGER.error(OrderProcessingException.ERR_PAYMENT_REJECTED);
                 wasError = true;
                 throw new OrderProcessingException(OrderProcessingException.ERR_PAYMENT_REJECTED);
             }
             LOGGER.info("Payment for order was done");
-            if(!shopService.verifyOrder(orderId)) {
+            if (!shopService.verifyOrder(orderId)) {
                 LOGGER.error(OrderProcessingException.ERR_VERIFICATION_ERROR);
                 wasError = true;
                 throw new OrderProcessingException((OrderProcessingException.ERR_VERIFICATION_ERROR));
             }
             LOGGER.info("Order is ready to submit");
-            if(!shopService.submitOrder(orderId)) {
+            if (!shopService.submitOrder(orderId)) {
                 LOGGER.error(OrderProcessingException.ERR_SUBMITTING_ERROR);
                 wasError = true;
                 throw new OrderProcessingException(OrderProcessingException.ERR_SUBMITTING_ERROR);
             }
             LOGGER.info("Order: " + orderId + " submitted");
         } finally {
-            if(wasError) {
+            if (wasError) {
                 LOGGER.info("Canceling order: " + orderId);
                 shopService.cancelOrder(orderId);
             }

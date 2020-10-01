@@ -35,7 +35,7 @@ public class FinderTestSuite {
         companyDao.save(new Company("Company"));
 
         //When
-        List<Company> companyList = finder.findCompanyByCharset("%irm%");
+        List<Company> companyList = finder.findCompanyByCharset("irm");
 
         //Then
         assertEquals(companyList.size(), 1);
@@ -52,7 +52,7 @@ public class FinderTestSuite {
         employeeDao.save(new Employee("Ed", "Cisowski"));
 
         //When
-        List<Employee> employeeList = finder.findEmployeeByCharset("%ski%");
+        List<Employee> employeeList = finder.findEmployeeByCharset("ski");
 
         //Then
         assertEquals(2, employeeList.size());
